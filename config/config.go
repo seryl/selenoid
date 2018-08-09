@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"runtime"
 	"strings"
 	"sync"
 
@@ -39,13 +40,34 @@ type Version map[string]Quota
 // Browsers - browser names for versions
 type Browsers map[string]Version
 
+type BuildInfo struct {
+	Revision string    `json:"revision"`
+	Time     time.Time `json:"time"`
+	Version  string    `json:"version"`
+}
+
+type OSInfo struct {
+	Arch    string `json:"arch"`
+	Name    string `json:"name"`
+	Version string `json:"version"`
+}
+
+type HubInfo struct {
+	Ready     bool      `json:"ready"`
+	Message   string    `json:"message"`
+	BuildInfo BuildInfo `json:"build"`
+	OSInfo    OSInfo    `json:"os"`
+}
+
 // State - current state
 type State struct {
-	Total    int      `json:"total"`
-	Used     int      `json:"used"`
-	Queued   int      `json:"queued"`
-	Pending  int      `json:"pending"`
-	Browsers Browsers `json:"browsers"`
+	Total     int      `json:"total"`
+	Used      int      `json:"used"`
+	Queued    int      `json:"queued"`
+	Pending   int      `json:"pending"`
+	Browsers  Browsers `json:"browsers"`
+	HubStatus int      `json:"status"`
+	HubInfo   HubInfo  `json:"value"`
 }
 
 // Browser configuration
@@ -143,7 +165,29 @@ func (config *Config) Find(name string, version string) (*Browser, string, bool)
 func (config *Config) State(sessions *session.Map, limit, queued, pending int) *State {
 	config.lock.RLock()
 	defer config.lock.RUnlock()
-	state := &State{limit, 0, queued, pending, make(Browsers)}
+	state := &State{
+		Total:     limit,
+		Used:      0,
+		Queued:    queued,
+		Pending:   pending,
+		Browsers:  make(Browsers),
+		HubStatus: 0,
+		HubInfo: HubInfo{
+			Ready:   true,
+			Message: "node is ready",
+			BuildInfo: BuildInfo{
+				Revision: "unknown",
+				Time:     time.Now(),
+				Version:  "selenoid",
+			},
+			OSInfo: OSInfo{
+				Arch:    runtime.GOARCH,
+				Name:    runtime.GOOS,
+				Version: "unknown",
+			},
+		},
+	}
+
 	for n, b := range config.Browsers {
 		state.Browsers[n] = make(Version)
 		for v := range b.Versions {
