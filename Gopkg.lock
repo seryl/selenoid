@@ -2,107 +2,236 @@
 
 
 [[projects]]
+  digest = "1:e4ad1553abe1cd4a03d522250ef94270b83546f7332c37171df6c6f8eeff737d"
   name = "github.com/Microsoft/go-winio"
   packages = ["."]
+  pruneopts = ""
   revision = "b7c3cf0d1286c7b62b140ed960a00b154c1b6fcc"
   version = "v0.4.6"
 
 [[projects]]
   branch = "master"
+  digest = "1:485f9bd623e412101b569f53837057aeecd87c4d547db9de75e72173b78d6a7a"
   name = "github.com/aandryashin/matchers"
-  packages = [".","httpresp"]
+  packages = [
+    ".",
+    "httpresp",
+  ]
+  pruneopts = ""
   revision = "435295ea180e58dbfa526db1ebab8c801b4c2b75"
 
 [[projects]]
   branch = "master"
+  digest = "1:5d117a1d3e778167c8333b61f560212b814a6a43a68e451e29e2becbb4436b15"
   name = "github.com/aerokube/util"
-  packages = [".","docker"]
+  packages = [
+    ".",
+    "docker",
+  ]
+  pruneopts = ""
   revision = "78436541227f568704800278e78f52274fa3bfce"
 
 [[projects]]
+  digest = "1:27b65f2bd793139595f788a1bbc8fe0f877c89f74931b447343d856313339d9e"
   name = "github.com/aws/aws-sdk-go"
-  packages = ["aws","aws/awserr","aws/awsutil","aws/client","aws/client/metadata","aws/corehandlers","aws/credentials","aws/credentials/ec2rolecreds","aws/credentials/endpointcreds","aws/credentials/stscreds","aws/csm","aws/defaults","aws/ec2metadata","aws/endpoints","aws/request","aws/session","aws/signer/v4","internal/sdkio","internal/sdkrand","internal/sdkuri","internal/shareddefaults","private/protocol","private/protocol/eventstream","private/protocol/eventstream/eventstreamapi","private/protocol/query","private/protocol/query/queryutil","private/protocol/rest","private/protocol/restxml","private/protocol/xml/xmlutil","service/s3","service/s3/s3iface","service/s3/s3manager","service/sts"]
+  packages = [
+    "aws",
+    "aws/awserr",
+    "aws/awsutil",
+    "aws/client",
+    "aws/client/metadata",
+    "aws/corehandlers",
+    "aws/credentials",
+    "aws/credentials/ec2rolecreds",
+    "aws/credentials/endpointcreds",
+    "aws/credentials/stscreds",
+    "aws/csm",
+    "aws/defaults",
+    "aws/ec2metadata",
+    "aws/endpoints",
+    "aws/request",
+    "aws/session",
+    "aws/signer/v4",
+    "internal/sdkio",
+    "internal/sdkrand",
+    "internal/sdkuri",
+    "internal/shareddefaults",
+    "private/protocol",
+    "private/protocol/eventstream",
+    "private/protocol/eventstream/eventstreamapi",
+    "private/protocol/query",
+    "private/protocol/query/queryutil",
+    "private/protocol/rest",
+    "private/protocol/restxml",
+    "private/protocol/xml/xmlutil",
+    "service/s3",
+    "service/s3/s3iface",
+    "service/s3/s3manager",
+    "service/sts",
+  ]
+  pruneopts = ""
   revision = "94b80148ea4b1b136682116294b151766a3b85c2"
   version = "v1.14.27"
 
 [[projects]]
+  digest = "1:191610c9fb729ef1b90efdec8c90e35078e4474e2a8e223f9cf39e0f128a58c4"
   name = "github.com/docker/distribution"
-  packages = ["digestset","reference"]
+  packages = [
+    "digestset",
+    "reference",
+  ]
+  pruneopts = ""
   revision = "277ed486c948042cab91ad367c379524f3b25e18"
 
 [[projects]]
+  digest = "1:e9be55cc207c538df662c986bd09d1f4c6e8bd9a38f5f22fae3df389a2c7d305"
   name = "github.com/docker/docker"
-  packages = ["api","api/types","api/types/blkiodev","api/types/container","api/types/events","api/types/filters","api/types/image","api/types/mount","api/types/network","api/types/registry","api/types/strslice","api/types/swarm","api/types/swarm/runtime","api/types/time","api/types/versions","api/types/volume","client","errdefs","pkg/stdcopy"]
+  packages = [
+    "api",
+    "api/types",
+    "api/types/blkiodev",
+    "api/types/container",
+    "api/types/events",
+    "api/types/filters",
+    "api/types/image",
+    "api/types/mount",
+    "api/types/network",
+    "api/types/registry",
+    "api/types/strslice",
+    "api/types/swarm",
+    "api/types/swarm/runtime",
+    "api/types/time",
+    "api/types/versions",
+    "api/types/volume",
+    "client",
+    "errdefs",
+    "pkg/stdcopy",
+  ]
+  pruneopts = ""
   revision = "1ef1cc8388165b2b848f9b3f53ec91c87de09f63"
 
 [[projects]]
+  digest = "1:a5ecc2e70260a87aa263811281465a5effcfae8a54bac319cee87c4625f04d63"
   name = "github.com/docker/go-connections"
-  packages = ["nat","sockets","tlsconfig"]
+  packages = [
+    "nat",
+    "sockets",
+    "tlsconfig",
+  ]
+  pruneopts = ""
   revision = "3ede32e2033de7505e6500d6c868c2b9ed9f169d"
   version = "v0.3.0"
 
 [[projects]]
+  digest = "1:a406cae5eda48c01f8171bd47beb038751393f25ac06774ce04f9d6b0b703f17"
   name = "github.com/docker/go-units"
   packages = ["."]
+  pruneopts = ""
   revision = "0dadbb0345b35ec7ef35e228dabb8de89a65bf52"
   version = "v0.3.2"
 
 [[projects]]
+  digest = "1:858b7fe7b0f4bc7ef9953926828f2816ea52d01a88d72d1c45bc8c108f23c356"
   name = "github.com/go-ini/ini"
   packages = ["."]
+  pruneopts = ""
   revision = "358ee7663966325963d4e8b2e1fbd570c5195153"
   version = "v1.38.1"
 
 [[projects]]
+  digest = "1:70a80170917a15e1ff02faab5f9e716e945e0676e86599ba144d38f96e30c3bf"
   name = "github.com/gogo/protobuf"
   packages = ["proto"]
+  pruneopts = ""
   revision = "342cbe0a04158f6dcb03ca0079991a51a4248c02"
   version = "v0.5"
 
 [[projects]]
+  digest = "1:6f49eae0c1e5dab1dafafee34b207aeb7a42303105960944828c2079b92fc88e"
   name = "github.com/jmespath/go-jmespath"
   packages = ["."]
+  pruneopts = ""
   revision = "0b12d6b5"
 
 [[projects]]
+  digest = "1:5d9b668b0b4581a978f07e7d2e3314af18eb27b3fb5d19b70185b7c575723d11"
   name = "github.com/opencontainers/go-digest"
   packages = ["."]
+  pruneopts = ""
   revision = "279bed98673dd5bef374d3b6e4b09e2af76183bf"
   version = "v1.0.0-rc1"
 
 [[projects]]
+  digest = "1:f26c8670b11e29a49c8e45f7ec7f2d5bac62e8fd4e3c0ae1662baa4a697f984a"
   name = "github.com/opencontainers/image-spec"
-  packages = ["specs-go","specs-go/v1"]
+  packages = [
+    "specs-go",
+    "specs-go/v1",
+  ]
+  pruneopts = ""
   revision = "d60099175f88c47cd379c4738d158884749ed235"
   version = "v1.0.1"
 
 [[projects]]
+  digest = "1:63e142fc50307bcb3c57494913cfc9c12f6061160bdf97a678f78c71615f939b"
   name = "github.com/pborman/uuid"
   packages = ["."]
+  pruneopts = ""
   revision = "e790cca94e6cc75c7064b1332e63811d4aae1a53"
   version = "v1.1"
 
 [[projects]]
+  digest = "1:7365acd48986e205ccb8652cc746f09c8b7876030d53710ea6ef7d0bd0dcd7ca"
   name = "github.com/pkg/errors"
   packages = ["."]
+  pruneopts = ""
   revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
   version = "v0.8.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:f3ee2a699dd02cac37fbca1d028f1121ce0e48143a0f9abd293d3141dcfe6b92"
   name = "golang.org/x/net"
-  packages = ["context","context/ctxhttp","proxy","websocket"]
+  packages = [
+    "context",
+    "context/ctxhttp",
+    "proxy",
+    "websocket",
+  ]
+  pruneopts = ""
   revision = "5ccada7d0a7ba9aeb5d3aca8d3501b4c2a509fec"
 
 [[projects]]
   branch = "master"
+  digest = "1:b22916910a1104a56a5a64a208de1f3f58e69cde1cca3229f8b54f531df1be69"
   name = "golang.org/x/sys"
   packages = ["windows"]
+  pruneopts = ""
   revision = "810d7000345868fc619eb81f46307107118f4ae1"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "f75c8d75492e276df3a217ec04dfcdaaa8a60f37b4affc7a61e9b07e48fbed47"
+  input-imports = [
+    "github.com/aandryashin/matchers",
+    "github.com/aandryashin/matchers/httpresp",
+    "github.com/aerokube/util",
+    "github.com/aerokube/util/docker",
+    "github.com/aws/aws-sdk-go/aws",
+    "github.com/aws/aws-sdk-go/aws/credentials",
+    "github.com/aws/aws-sdk-go/aws/session",
+    "github.com/aws/aws-sdk-go/service/s3/s3manager",
+    "github.com/docker/docker/api/types",
+    "github.com/docker/docker/api/types/container",
+    "github.com/docker/docker/api/types/network",
+    "github.com/docker/docker/api/types/strslice",
+    "github.com/docker/docker/client",
+    "github.com/docker/docker/pkg/stdcopy",
+    "github.com/docker/go-connections/nat",
+    "github.com/docker/go-units",
+    "github.com/pborman/uuid",
+    "github.com/pkg/errors",
+    "golang.org/x/net/websocket",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
