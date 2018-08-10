@@ -41,9 +41,9 @@ type Version map[string]Quota
 type Browsers map[string]Version
 
 type BuildInfo struct {
-	Revision string    `json:"revision"`
-	Time     time.Time `json:"time"`
-	Version  string    `json:"version"`
+	Revision string `json:"revision"`
+	Time     string `json:"time"`
+	Version  string `json:"version"`
 }
 
 type OSInfo struct {
@@ -162,7 +162,7 @@ func (config *Config) Find(name string, version string) (*Browser, string, bool)
 }
 
 // State - get current state
-func (config *Config) State(sessions *session.Map, limit, queued, pending int) *State {
+func (config *Config) State(sessions *session.Map, limit, queued, pending int, gitRevision, buildStamp string) *State {
 	config.lock.RLock()
 	defer config.lock.RUnlock()
 	state := &State{
@@ -176,14 +176,15 @@ func (config *Config) State(sessions *session.Map, limit, queued, pending int) *
 			Ready:   true,
 			Message: "node is ready",
 			BuildInfo: BuildInfo{
-				Revision: "unknown",
-				Time:     time.Now(),
-				Version:  "selenoid",
+				Revision: gitRevision,
+				// Time:     buildStamp,
+				Version: "selenoid",
+				// Version: "3.13.0",
 			},
 			OSInfo: OSInfo{
-				Arch:    runtime.GOARCH,
-				Name:    runtime.GOOS,
-				Version: "unknown",
+				Arch: runtime.GOARCH,
+				Name: runtime.GOOS,
+				// Version: "unknown",
 			},
 		},
 	}

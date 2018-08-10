@@ -83,6 +83,7 @@ var (
 	videoOutputDir           string
 	videoRecorderImage       string
 	logOutputDir             string
+	hubAddress               string
 	conf                     *config.Config
 	queue                    *protect.Queue
 	manager                  service.Manager
@@ -120,6 +121,7 @@ func init() {
 	flag.StringVar(&videoOutputDir, "video-output-dir", "video", "Directory to save recorded video to")
 	flag.StringVar(&videoRecorderImage, "video-recorder-image", "selenoid/video-recorder", "Image to use as video recorder")
 	flag.StringVar(&logOutputDir, "log-output-dir", "", "Directory to save session log to")
+	flag.StringVar(&hubAddress, "hub", "", "The optional selenium hub to register with")
 	flag.Parse()
 
 	if version {
@@ -172,6 +174,10 @@ func init() {
 			log.Fatalf("[-] [INIT] [Failed to create log output dir %s: %v]", logOutputDir, err)
 		}
 		log.Printf("[-] [INIT] [Logs Dir: %s]", logOutputDir)
+	}
+
+	if hubAddress != "" {
+		log.Printf("[-] [INIT] [Selenium Hub: %s]", hubAddress)
 	}
 
 	upload.Init()
@@ -325,7 +331,7 @@ func handler() http.Handler {
 	})
 	root.HandleFunc("/status", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(conf.State(sessions, limit, queue.Queued(), queue.Pending()))
+		json.NewEncoder(w).Encode(conf.State(sessions, limit, queue.Queued(), queue.Pending(), gitRevision, buildStamp))
 	})
 	root.HandleFunc("/ping", ping)
 	root.Handle("/vnc/", websocket.Handler(vnc))
@@ -346,5 +352,17 @@ func showVersion() {
 func main() {
 	log.Printf("[-] [INIT] [Timezone: %s]", time.Local)
 	log.Printf("[-] [INIT] [Listening on %s]", listen)
+
+	go func() {
+		if hubAddress == "" {
+			return
+		}
+		hubRegistration(RegistrationInfo{
+			ListenAddress: listen,
+			MaxSessions:   limit,
+			State:         conf.State(sessions, limit, queue.Queued(), queue.Pending(), gitRevision, buildStamp),
+		})
+	}()
+
 	log.Fatal(http.ListenAndServe(listen, handler()))
 }
