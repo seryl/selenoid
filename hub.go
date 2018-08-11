@@ -34,7 +34,6 @@ func GetOutboundIP() net.IP {
 type RegistrationInfo struct {
 	ListenAddress string
 	Timeout       int
-	MaxSessions   int
 	State         *config.State
 }
 
@@ -76,7 +75,7 @@ func generateCapabilities(ri RegistrationInfo) []HubCapabilities {
 			capabilities = append(capabilities, HubCapabilities{
 				Browser:          browser,
 				Version:          ver,
-				MaxInstances:     ri.MaxSessions,
+				MaxInstances:     ri.State.Total,
 				Platform:         runtime.GOOS,
 				PlatformName:     runtime.GOOS,
 				SeleniumProtocol: "WebDriver",

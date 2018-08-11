@@ -359,7 +359,6 @@ func main() {
 		}
 		hubRegistration(RegistrationInfo{
 			ListenAddress: listen,
-			MaxSessions:   limit,
 			State:         conf.State(sessions, limit, queue.Queued(), queue.Pending(), gitRevision, buildStamp),
 		})
 	}()
